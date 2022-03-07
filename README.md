@@ -1,7 +1,9 @@
 # Casestudy_Bellabeat
 This casestudy is part of my Coursera Google Analytics Professional Certification 'capstone'.  
 
-Datasets:  
+**Datasets:**  
+
+**Fitbit Fitness Tracker Data**
 https://www.kaggle.com/arashnic/fitbit![image](https://user-images.githubusercontent.com/73305510/157001164-7dfa892b-a4b0-4795-9d80-fba6db43188f.png)
 
 **Possible other datasets that may come into use:**
