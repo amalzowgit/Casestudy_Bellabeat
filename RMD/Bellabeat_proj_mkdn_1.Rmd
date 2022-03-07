@@ -1,0 +1,130 @@
+---
+title: "bellabeat Smart Device Case Study"
+author: 'by Angela Malzow'
+date: "3/7/2022"
+output: html_document
+---
+```{r, include=FALSE}
+library(tidyverse)
+library(knitr)
+library(png)
+library(here)
+library(magick)
+library(ggplot2)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r, out.width = "25%"}
+include_graphics(here("bellalogo.png"))
+```
+
+#### **Client:** 
+##### [**Bellabeat**](https://bellabeat.com/), *founded in 2013*   
+
+#### **What the client does:** 
+*high-tech manufacturer of health focused products*  
+
+#### **Target demographic:** 
+*women*  
+
+#### **Questions to guide analysis**  
+<ol>
+<li>_What are some trends in smart device usage?_</li>  
+<li>_How could these trends apply to Bellabeat customers?_</li>  
+<li>_How could these trends help influence Bellabeat marketing strategy?_</li>
+</ol>
+
+#### **Deliverables**
+**You will produce a report with the following deliverables:**
+<ol>
+<li>*A clear summary of the business task*</li>
+<li>*A description of all data sources used*</li>
+<li>*Documentation of any cleaning or manipulation of data*</li>
+<li>*A summary of your analysis*</li>
+<li>*Supporting visualizations and key findings*</li>
+<li>*Your top high-level content recommendations based on your analysis*</li>
+</ol>
+
+### **Ask**
+_Analyze smart device usage data in order to gain insight into how consumers use non-Bellabeat smart devices. Then, select one Bellabeat product to apply these insights to in your presentation._
+
+##### **Deliverable** 
+*A clear statement of the business task*
+
+##### **Statment of business task**  
+_To analyze and gain insights from non-bellabeat smart devices and apply insights to a bellabeat product._
+
+```{r}
+
+```
+
+### **Prepare**  
+
+You've been advised to use public data that explores smart device users’daily habits:  
+_FitBit Fitness Tracker Data (CC0: Public Domain, dataset made available through Mobius): This Kaggle data set contains personal fitness tracker from thirty fitbit users. Thirty eligible Fitbit users consented to the submission of personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. It includes information about daily activity, steps, and heart rate that can be used to explore users’ habits._
+
+#### **Dataset to be used:** 
+**Website:** *Kaggle*  
+**User:** *Möbius*  
+**Dataset:** *Fitbit Fitness Tracker Data link [**here**](https://www.kaggle.com/arashnic/fitbit)*
+
+You've been advised that this data set might have some limitations, and encourages you to consider adding another data to help address those limitations as you begin to work more with this data.  
+
+**Possible other datasets:**
+
+1. **An Open Dataset for Human Activity Analysis - Data collected using Smartphone, Smartwatch and Smartglasses**
+https://www.kaggle.com/sasanj/human-activity-smart-devices
+
+2. **Smartphone and Smartwatch Activity and Biometrics - Motion-based biometrics using activities of daily living**
+https://www.kaggle.com/mashlyn/smartphone-and-smartwatch-activity-and-biometrics
+
+##### **Deliverable** 
+*A clear statement of the business task*
+A description of all data sources used
+
+
+
+```{r}
+
+```
+
+### **Process**
+
+```{r}
+
+```
+
+### **Analyze**
+
+```{r}
+
+```
+
+### **Share**
+
+```{r}
+
+```
+
+### **Act**
+
+```{r}
+
+```
+
+
+
+**Resources:**  
+Help with images in R:  
+http://zevross.com/blog/2017/06/19/tips-and-tricks-for-working-with-images-and-figures-in-r-markdown-documents/  
+Bellabeats logo vector:  
+https://cdn.freelogovectors.net/wp-content/uploads/2021/06/bellabeat-logo-freelogovectors.net_.png  
+Setting up a Presentation in R (PowerPoint):  
+https://bookdown.org/yihui/rmarkdown/powerpoint-presentation.html  
+R Tips and Tricks:  
+https://www.dataquest.io/blog/r-markdown-tips-tricks-and-shortcuts/  
+
+
