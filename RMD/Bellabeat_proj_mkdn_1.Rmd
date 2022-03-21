@@ -73,6 +73,10 @@ _FitBit Fitness Tracker Data (CC0: Public Domain, dataset made available through
 
 You've been advised that this data set might have some limitations, and encourages you to consider adding another data to help address those limitations as you begin to work more with this data.  
 
+Obvious FitBase dataset limitations:  
+1. Only data for 30 users
+2. No indicators as to why some users did not utilize certain features, i.e. weight logs
+
 **Possible other datasets:**
 
 1. **An Open Dataset for Human Activity Analysis - Data collected using Smartphone, Smartwatch and Smartglasses**
@@ -92,6 +96,10 @@ A description of all data sources used
 ```
 
 ### **Process**
+
+#### Processing errors:  
+Google Cloud when uploading heartrate_seconds_merged to create a table:  
+_Could not parse '4/12/2016 7:21:00 AM' as TIMESTAMP for field Time (position 1) starting at location 15 with message 'Invalid time zone: AM'_  
 
 ```{r}
 
@@ -117,7 +125,7 @@ A description of all data sources used
 
 
 
-**Resources:**  
+**Resources/References:**  
 Help with images in R:  
 http://zevross.com/blog/2017/06/19/tips-and-tricks-for-working-with-images-and-figures-in-r-markdown-documents/  
 Bellabeats logo vector:  
@@ -126,5 +134,9 @@ Setting up a Presentation in R (PowerPoint):
 https://bookdown.org/yihui/rmarkdown/powerpoint-presentation.html  
 R Tips and Tricks:  
 https://www.dataquest.io/blog/r-markdown-tips-tricks-and-shortcuts/  
+FitBit Sleep Minute Log:  
+https://dev.fitbit.com/build/reference/web-api/sleep-v1/  
+Original FitBit data hosted at Zenodo.org:  
+https://zenodo.org/record/53894#.YijQq-jMKTl
 
 
