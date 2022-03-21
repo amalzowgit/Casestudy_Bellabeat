@@ -48,7 +48,7 @@ include_graphics(here("bellalogo.png"))
 <li>*Your top high-level content recommendations based on your analysis*</li>
 </ol>
 
-### **Ask**
+### **1. Ask**
 _Analyze smart device usage data in order to gain insight into how consumers use non-Bellabeat smart devices. Then, select one Bellabeat product to apply these insights to in your presentation._
 
 ##### **Deliverable** 
@@ -58,10 +58,14 @@ _Analyze smart device usage data in order to gain insight into how consumers use
 _To analyze and gain insights from non-bellabeat smart devices and apply insights to a bellabeat product._
 
 ```{r}
-
+# set theme
+theme_set(
+  theme_classic() +
+    theme(legend.position = "right")
+)
 ```
 
-### **Prepare**  
+### **2. Prepare**  
 
 You've been advised to use public data that explores smart device users’daily habits:  
 _FitBit Fitness Tracker Data (CC0: Public Domain, dataset made available through Mobius): This Kaggle data set contains personal fitness tracker from thirty fitbit users. Thirty eligible Fitbit users consented to the submission of personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. It includes information about daily activity, steps, and heart rate that can be used to explore users’ habits._
@@ -75,7 +79,7 @@ You've been advised that this data set might have some limitations, and encourag
 
 Obvious FitBase dataset limitations:  
 1. Only data for 30 users
-2. No indicators as to why some users did not utilize certain features, i.e. weight logs
+2. No indicators as to why some users did not utilize certain features, i.e. weight logs, heart rate
 
 **Possible other datasets:**
 
@@ -90,20 +94,105 @@ https://www.kaggle.com/mashlyn/smartphone-and-smartwatch-activity-and-biometrics
 A description of all data sources used
 
 
+### **3. Process**
+
+#### Cleaning and Transforming Data
+
+18 data files total; chose 5 data sets that summed daily totals. In all 5 data sets, I ensured/manipulated the date into yyyy-mm-dd format to work easier with in R, and split time stamps into their own columns.
+
+###### Heart Rate Data  
+Started with largest dataset, heartrate_seconds_merged.csv, in R script fitbit_hr_seconds_cleaning; converted 'by second' data into a daily min, max, average, and SD readings per Session ID (id). Pulled resulting csv into Google sheets and converted date column into yyyy-mm-dd format.
+data already in long format;
+Resulting file for GitHub Dataset titled _fitbit_hr_min_max_per_id_date_2.csv_ will be used to gain insights during the analysis phase.
+
+###### Daily Steps Data  
+dailySteps_merged.csv, cleaned in Google sheets, data already in long format
+Resulting file for GitHub Dataset titled _dailySteps_mergedclean.csv_ will be used to gain insights during the analysis phase.
+
+###### Daily Calories Data  
+dailyCalories_merged.csv, cleaned in Google sheets, data already in long format
+Resulting file for GitHub Dataset titled _dailyCalories_mergedclean.csv_ will be used to gain insights during the analysis phase.
+
+###### Daily Sleep Minutes Data  
+sleepDay_merged.csv, cleaned in Google sheets, data already in long format
+Resulting file for GitHub Dataset titled _sleepDay_mergedclean.csv_ will be used to gain insights during the analysis phase.
+
+###### Weight Log Data  
+Smallest dataset cleaned in Google Sheets: weightLogInfo_merged.csv. 
+Resulting file for GitHub Dataset titled _weightLogInfo_mergedclean.csv_ will be used to gain insights during the analysis phase.
+
+```{r}
+heartrates_vis1 <- read_csv("/Documents/R/Casestudy_Bellabeat/cleaned_data/fitbit_hr_min_max_per_id_date_2.csv")
+View(heartrates_vis1)
+str(heartrates_vis1)
+colnames(heartrates_vis1)
+```
+
+```{r}
+# find unique id values
+unique(heartrates_vis1$id)
+```
+
+```{r}
+# create color palette for unique id values
+pal <- c(
+  "2022484408" = "aquamarine",
+  "2026352035" = "blue",
+  "2347167796" = "blueviolet",
+  "4020332650" = "chartreuse",
+  "4388161847" = "coral",
+  "4558609924" = "cornflowerblue",
+  "5553957443" = "cyan",
+  "5577150313" = "darkgoldenrod",
+  "6117666160" = "cadetblue",
+  "6775888955" = "burlywood4",
+  "6962181067" = "chocolate1",
+  "7007744171" = "darkgreen",
+  "8792009665" = "firebrick",
+  "8877689391" = "darkseagreen"
+)
+```
+
+```{r}
+# ggplot of daily mean HR per session id with color palette
+heartrates_vis1 %>% 
+  ggplot(aes(x = date, y = meanhr, color = factor(id))) +
+  geom_point() +
+  scale_x_date(date_labels = "%b %d", date_breaks = "1 day") +
+  scale_color_manual(
+    values = pal
+  ) +
+  theme(legend.position = "right", axis.text.x = element_text(angle = 90))
+```
 
 ```{r}
 
 ```
 
-### **Process**
+```{r}
 
-#### Processing errors:  
-Google Cloud when uploading heartrate_seconds_merged to create a table:  
-_Could not parse '4/12/2016 7:21:00 AM' as TIMESTAMP for field Time (position 1) starting at location 15 with message 'Invalid time zone: AM'_  
+```
 
 ```{r}
 
 ```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
+```{r}
+
+```
+
 
 ### **Analyze**
 
