@@ -98,30 +98,36 @@ A description of all data sources used
 
 #### Cleaning and Transforming Data
 
-18 data files total; chose 5 data sets that summed daily totals. In all 5 data sets, I ensured/manipulated the date into yyyy-mm-dd format to work easier with in R, and split time stamps into their own columns.
+18 data files total; chose 5 data sets that of daily records, and split time stamps into their own columns.
 
 ###### Heart Rate Data  
 Started with largest dataset, heartrate_seconds_merged.csv, in R script fitbit_hr_seconds_cleaning; converted 'by second' data into a daily min, max, average, and SD readings per Session ID (id). Pulled resulting csv into Google sheets and converted date column into yyyy-mm-dd format.
-data already in long format;
+data already in long format;  
+
 Resulting file for GitHub Dataset titled _fitbit_hr_min_max_per_id_date_2.csv_ will be used to gain insights during the analysis phase.
 
 ###### Daily Steps Data  
-dailySteps_merged.csv, cleaned in Google sheets, data already in long format
+dailySteps_merged.csv, cleaned in Google sheets, data already in long format  
+
 Resulting file for GitHub Dataset titled _dailySteps_mergedclean.csv_ will be used to gain insights during the analysis phase.
 
 ###### Daily Calories Data  
-dailyCalories_merged.csv, cleaned in Google sheets, data already in long format
+dailyCalories_merged.csv, cleaned in Google sheets, data already in long format  
+
 Resulting file for GitHub Dataset titled _dailyCalories_mergedclean.csv_ will be used to gain insights during the analysis phase.
 
 ###### Daily Sleep Minutes Data  
-sleepDay_merged.csv, cleaned in Google sheets, data already in long format
+sleepDay_merged.csv, cleaned in Google sheets, data already in long format  
+
 Resulting file for GitHub Dataset titled _sleepDay_mergedclean.csv_ will be used to gain insights during the analysis phase.
 
 ###### Weight Log Data  
 Smallest dataset cleaned in Google Sheets: weightLogInfo_merged.csv. 
+
 Resulting file for GitHub Dataset titled _weightLogInfo_mergedclean.csv_ will be used to gain insights during the analysis phase.
 
 ```{r}
+# read in and view data, structure and colnames
 heartrates_vis1 <- read_csv("/Documents/R/Casestudy_Bellabeat/cleaned_data/fitbit_hr_min_max_per_id_date_2.csv")
 View(heartrates_vis1)
 str(heartrates_vis1)
@@ -134,7 +140,7 @@ unique(heartrates_vis1$id)
 ```
 
 ```{r}
-# create color palette for unique id values
+# create color palette for unique id values, can and will add ids to this set as presented in addtl data sets
 pal <- c(
   "2022484408" = "aquamarine",
   "2026352035" = "blue",
@@ -154,15 +160,19 @@ pal <- c(
 ```
 
 ```{r}
-# ggplot of daily mean HR per session id with color palette
+# ggplot of daily mean HR per session id with color palette with labels
 heartrates_vis1 %>% 
-  ggplot(aes(x = date, y = meanhr, color = factor(id))) +
+  ggplot(mapping = aes(x = date, y = meanhr, color = factor(id))) +
   geom_point() +
   scale_x_date(date_labels = "%b %d", date_breaks = "1 day") +
   scale_color_manual(
-    values = pal
-  ) +
-  theme(legend.position = "right", axis.text.x = element_text(angle = 90))
+    values = pal) +
+  labs(title = "bellabeat Case Study: Insights from FitBit Heart Rate Readings", 
+       subtitle = "Daily Averages per Participant from April 12-May 12, 2016",
+       caption = "\n Data source: Kaggle user - Möbius\n Link: https://www.kaggle.com/datasets/arashnic/fitbit",
+       color = "Session id",
+       x = "HR Reading Date", 
+       y = "Average of Daily Readings per Session id")
 ```
 
 ```{r}
