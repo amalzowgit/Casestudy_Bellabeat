@@ -56,5 +56,19 @@ heartrates_vis1 %>%
 
 heartrates_vis2 <- read_csv("/Documents/R/Casestudy_Bellabeat/cleaned_data/fitbit_hr_min_max_per_id_date_2.csv")
 
+# min max HR readings vis
 heartrates_vis2 %>% 
-  
+  ggplot(aes(x = date)) +
+  geom_point(aes(y = minhr), color = "dodgerblue1", size = 2) +
+  geom_point(aes(y = maxhr), color = "darkorange2", size = 2) +
+  geom_line(aes(y = minhr), color = "dodgerblue1", size = 1) +
+  geom_line(aes(y = maxhr), color = "darkorange2", size = 1) +
+  scale_x_date(date_breaks = "7 days", date_labels = "%b %d") +
+  facet_wrap(~id) + 
+  labs(title = "bellabeat Case Study: Insights from FitBit Heart Rate Readings", 
+       subtitle = "Min & Max Daily Reading per Participant from April 12-May 12, 2016",
+       caption = "\n Data source: Kaggle user - Möbius\n Link: https://www.kaggle.com/datasets/arashnic/fitbit",
+       color = "Min & Max Reading",
+       x = "HR Reading Date", 
+       y = "Min-Max Daily Readings per Session id") +
+  legend(col = c("dodgerblue1", "darkorange2"))
